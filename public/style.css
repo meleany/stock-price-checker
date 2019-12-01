@@ -1,0 +1,159 @@
+/* styles */
+/* called by your view template */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: 16px;
+  text-align: justify; 
+}
+
+header {
+  text-align: center;
+  padding: 60px;
+  color: cadetblue;
+}
+
+h1 {
+  padding-bottom: 20px;
+  font-family: "Orbitron";
+  border-bottom: 5px double cadetblue;
+}
+
+h2 {
+  font-family: "Rajdhani";
+  font-weight: bold;
+  color: cadetblue;
+  font-size: 26px;
+}
+
+h3 {
+  font-family:"Julius Sans One";
+  font-size: 16px;
+  color: cadetblue;
+  padding-bottom: 20px;
+}
+
+h4 {
+  font-family:"Julius Sans One";
+  padding-top: 20px;
+}
+
+#userstories {
+  border: 1px solid cadetblue;
+  margin: 0 50px;
+  padding: 70px;
+  padding-top: 20px;
+  border-radius: 5px;
+  line-height: 2.0em;
+  font-family: "Electrolize";
+}
+
+#testui {
+  margin: 50px;
+  padding: 70px;
+  background-color: whitesmoke;
+  border: 1px solid cadetblue;
+  border-radius: 5px;
+  font-family: "Electrolize";
+}
+
+ol {
+  padding: 0 30px 20px 30px;
+}
+
+a {
+  text-decoration: none;  
+}
+
+i {
+  color: rgb(55,118,120);  
+  margin: 0 5px;  
+}
+
+p {
+  margin-bottom: 10px;  
+}
+
+form {
+  font-family: "Rajdhani";
+  text-align: center;
+  border: 1px solid cadetblue;
+  border-radius: 4px;
+  margin: 20px 100px 60px 100px;
+  padding-bottom: 40px;
+}
+
+fieldset {
+  border: none;
+  outline: none;
+}
+
+legend {
+  font-family:"Julius Sans One";
+  font-size: 16px;
+  font-weight: bold;
+  color: cadetblue;
+  padding: 20px 40px;
+}
+
+input[type=text], textarea {
+  font-family: "Rajdhani";
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 8px 10px;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 50%;
+}
+
+textarea {
+  resize: none;  
+}
+
+input[type=submit], button {
+  font-family: "Rajdhani";
+  font-size: 18px;
+  background-color: cadetblue;
+  color: white;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-left: 10px;
+}
+
+#jsonResult {
+  font-size: 12px;
+  overflow: auto;
+}
+
+pre {
+  overflow: auto;
+   white-space: pre-wrap;
+}
+
+.issue {
+  border: 1px solid cadetblue;
+  background-color: aliceblue;
+  border-radius: 5px;
+  margin: 10px 20px;
+}
+
+footer {
+  font-family: "Rajdhani";
+  font-size: 16px;
+  color: cadetblue;
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 5px double cadetblue;
+  text-align: center;
+  padding: 10px;
+}
+
+#footer-row1 {
+  margin: 10px;
+}

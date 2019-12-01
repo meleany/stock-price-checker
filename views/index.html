@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stock Price Checker</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet. The original code present on the boilerplate requires the ./public otherwise will not read it. -->    
+    <link rel="stylesheet" href="./public/style.css">
+
+    <!-- import Google fonts and awesome icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron:700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Julius Sans One" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Electrolize" rel="stylesheet" type="text/css">        
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani:400,700" rel="stylesheet" type="text/css">           
+  </head>
+  
+  <body>
+    <header>
+      <h1>Nasdaq Stock Price Checker</h1>
+      <h4>FreeCodeCamp Information Security & Quality Assurance Project 04</h4>
+    </header>
+       
+    <div id="userstories">
+      <h3>User Stories</h3>
+      <ol>
+        <li>Set the content security policies to only allow loading of scripts and css from your server.</li>
+        <li>I can <code>GET /api/stock-prices</code> with a form data containing a Nasdaq <i>stock</i> ticker and receive back an object 
+          <i>stockData</i>.
+        </li>
+        <li>In the object <i>stockData</i>, I can see <i>stock</i>(string, the ticker), <i>price</i>(decimal in string format), and 
+          <i>likes</i>(int).
+        </li>
+        <li>I can pass the field <i>like</i> set to <b>true</b>(boolean) to have my like added to the stock(s). Only 1 like per ip should 
+          be accepted.
+        </li>
+        <li>If I pass along 2 stocks, the returned object will be an array with both stocks info. However, instead of <i>likes</i>, it will 
+          display <i>rel_likes</i> (the difference between the likes on both).
+        </li>
+        <li>A good way to receive current price is the following external API(replacing 'GOOG' with your stock): 
+          <code>https://finance.google.com/finance/info?q=NASDAQ%3aGOOG</code>
+        </li>
+        <li>A good way to receive current prices is through FCC stock price proxy (replacing 'GOOG' with your stock): 
+          <code>https://repeated-alpaca.glitch.me/v1/stock/GOOG/quote</code>
+        </li>
+        <li>All 5 functional tests are complete and passing.</li>
+      </ol>
+      
+      <h3>Example usage:</h3>
+      <code>/api/stock-prices?stock=goog</code><br>
+      <code>/api/stock-prices?stock=goog&amp;like=true</code><br>
+      <code>/api/stock-prices?stock=goog&amp;stock=msft</code><br>
+      <code>/api/stock-prices?stock=goog&amp;stock=msft&amp;like=true</code><br><br>
+      
+      <h3>Example return:</h3>
+      <code>{"stockData":{"stock":"GOOG","price":"786.90","likes":1}}</code><br>
+      <code>{"stockData":[{"stock":"MSFT","price":"62.30","rel_likes":-1},{"stock":"GOOG","price":"786.90","rel_likes":1}]}</code>
+    </div>
+    
+    <div id="testui">
+      <h2>Front-End Sample</h2>
+      <form id="testForm2" class="border">
+        <fieldset>
+          <legend>Get single price and total likes</legend>
+          <input type="text" name="stock" placeholder="goog" required>
+          <input type="checkbox" name="like" value="true"> Like?<br>
+          <button type="submit">Get Price!</button>
+        </fieldset>
+      </form>
+        
+      <h3>Compare and get relative likes</h3>
+      <form id="testForm" class="border">
+        <fieldset>
+          <legend>Compare and get relative likes</legend>
+          <input type="text" name="stock" placeholder="goog" required>
+          <input type="text" name="stock" placeholder="msft" required><br>
+          <input type="checkbox" name="like" value="true"> Like both?<br>
+          <button type="submit">Get Price!</button>
+        </fieldset>
+      </form>
+      <code id="jsonResult"></code>
+    </div>
+    
+    <footer>
+      <div id="footer-row1">
+        <a class="button" href="https://www.freecodecamp.com/meleany" target="_blank"> <i class="fa fa-free-code-camp fa-2x fa-fw"></i> </a> 
+        <a class="button" href="https://github.com/meleany" target="_blank"> <i class="fa fa-github-alt fa-2x fa-fw"></i> </a>
+        <a class="button" href="https://codepen.io/meleany" target="_blank"> <i class="fa fa-codepen fa-2x fa-fw"></i> </a>
+        <a class="button" href="https://ymelbart.wordpress.com/" target="_blank"> <i class="fa fa-wordpress fa-2x fa-fw"></i> </a>
+      </div>
+      <div id="footer-row2">
+        Designed by Yasmin Melean 2019.
+      </div>
+    </footer> 
+    
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+    <script>
+      $(function() {
+        $('#testForm').submit(function(e) {
+          $.ajax({
+            url: '/api/stock-prices',
+            type: 'get',
+            data: $('#testForm').serialize(),
+            success: function(data) {
+              $('#jsonResult').text(JSON.stringify(data));
+            }
+          });
+          e.preventDefault();
+        });
+        $('#testForm2').submit(function(e) {
+          $.ajax({
+            url: '/api/stock-prices',
+            type: 'get',
+            data: $('#testForm2').serialize(),
+            success: function(data) {
+              $('#jsonResult').text(JSON.stringify(data));
+            }
+          });
+          e.preventDefault();
+        });
+      });
+   </script>
+  </body>
+</html>
